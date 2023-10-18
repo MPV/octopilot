@@ -6,16 +6,31 @@ on:
 jobs:
   latest:
     name: GitHub Action latest
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: MPV/octopilot@patch-1 # ./action.yml
     - run: octopilot --help
 
   specific:
-    name: GitHub Action specific
-    runs-on: ubuntu-latest
+    name: GitHub Action
+    strategy:
+      matrix:
+        version:
+          - v1.2.23
+          - 1.2.23
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: MPV/octopilot@patch-1 # ./action.yml
       with:
-        version: 1.2.23
+        version: ${{ matrix.version }}
     - run: octopilot --help

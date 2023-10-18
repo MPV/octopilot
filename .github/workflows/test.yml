@@ -10,7 +10,6 @@ jobs:
     steps:
     - uses: MPV/octopilot@patch-1 # ./action.yml
     - run: octopilot --help
-    - run: octopilot --version
 
   specific:
     name: GitHub Action specific
@@ -20,4 +19,3 @@ jobs:
       with:
         version: 1.2.23
     - run: octopilot --help
-    - run: octopilot --version

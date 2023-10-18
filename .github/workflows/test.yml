@@ -7,6 +7,7 @@ jobs:
   latest:
     name: GitHub Action latest
     strategy:
+      fail-fast: false
       matrix:
         os:
           - ubuntu-latest
@@ -20,6 +21,7 @@ jobs:
   specific:
     name: GitHub Action
     strategy:
+      fail-fast: false
       matrix:
         version:
           - v1.2.23

@@ -1,0 +1,23 @@
+name: Test octopilot action
+
+on:
+  pull_request:
+
+jobs:
+  latest:
+    name: GitHub Action latest
+    runs-on: ubuntu-latest
+    steps:
+    - uses: MPV/octopilot@patch-1 # ./action.yml
+    - run: octopilot --help
+    - run: octopilot --version
+
+  specific:
+    name: GitHub Action specific
+    runs-on: ubuntu-latest
+    steps:
+    - uses: MPV/octopilot@patch-1 # ./action.yml
+      with:
+        version: 1.2.23
+    - run: octopilot --help
+    - run: octopilot --version
